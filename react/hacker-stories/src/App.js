@@ -5,7 +5,14 @@ const welcome = {
     title: "React",
 };
 
-const list = [
+
+
+const getTitle = (title) => {
+    return title;
+}
+
+const App = () => {
+  const stories = [
     {
         title: "React",
         url: "https://reactjs.org/",
@@ -24,18 +31,13 @@ const list = [
     },
 ];
 
-const getTitle = (title) => {
-    return title;
-}
-
-const App = () => {
     return (
         <div>
             <Header />
 
             <h2>{getTitle("Function Result")} as a title 2</h2>
             <p>Here is an array, but as a component</p>
-            <List />
+            <List list={stories} test="This is a Test" />
         </div>
     );
 }
@@ -57,11 +59,11 @@ const Header = () => {
     );
 }
 
-const List = () => {
-    return list.map((item) => {
+const List = props => {
+    return props.list.map((item) => {
         return (
             <div key={item.objectID}>
-                x -
+                x - {props.test} - 
                 <span>
                     <a href={item.url}>{item.title}</a>
                 </span>
