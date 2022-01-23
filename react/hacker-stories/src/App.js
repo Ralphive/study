@@ -39,7 +39,11 @@ const App = () => {
         </div>
     );
 }
-export default App;
+const handleChange = event =>{
+  // console.log(event)
+  console.log(event.target.value);
+
+}
 
 const Header = () => {
     return (
@@ -48,7 +52,7 @@ const Header = () => {
                 {welcome.greeting} {welcome.title}
             </h1>
             <label htmlFor="search">Busca: </label>
-            <input id="search" type="text" />
+            <input id="search" type="text" onChange={handleChange} />
         </header>
     );
 }
@@ -68,3 +72,6 @@ const List = () => {
         );
     });
 }
+
+export default App;
+
