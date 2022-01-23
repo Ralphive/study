@@ -2,18 +2,10 @@ import "./App.css";
 import React from 'react';
 
 
-const welcome = {
-    greeting: "Hey",
-    title: "React",
-};
 
-const getTitle = (title) => {
-    return title;
-};
 
 
 const App = () => {
-  const [searchTerm, setSearchTerm] = React.useState('');
 
   const stories = [
     {
@@ -34,31 +26,55 @@ const App = () => {
     },
   ];
 
+  return (
+      <div>
+        <Header/>
+        <Search/>
+        <List list={stories}/>
+      </div>
+  );
+};
+
+const Header = () =>{
+  const welcome = {
+    greeting: "Hey",
+    title: "React",
+  };
+
+  const getTitle = (title) => {
+      return title;
+  };
+
+  return(
+    <header>
+      <h1>
+          {welcome.greeting} {getTitle(welcome.title)}
+      </h1>
+    </header>
+  )
+
+}
+
+const Search = () =>{
+  const [searchTerm, setSearchTerm] = React.useState('');
+  
   const handleChange = (event) => {
     // console.log(event)
     // console.log(event.target.value);
     setSearchTerm(event.target.value);
 
   };
+  
+  return(
+    <div>
+    <label htmlFor="search">Busca: </label>
+    <input id="search" type="text" onChange={handleChange} />
+    <span> Searching for <strong>{searchTerm}</strong>.</span>
+  </div>
+  )
 
-  return (
-      <div>
-          <header>
-            <h1>
-                {welcome.greeting} {welcome.title}
-            </h1>
-            <label htmlFor="search">Busca: </label>
-            <input id="search" type="text" onChange={handleChange} />
-            <span> Searching for <strong>{searchTerm}</strong>.</span>
-          </header>
 
-          <h2>{getTitle("Function Result")} as a title 2</h2>
-          <p>Here is an array, but as a component</p>
-          <List list={stories} test="This is a Test" />
-      </div>
-  );
-};
-
+}
 
 const List = (props) => {
     return props.list.map((item) => {
