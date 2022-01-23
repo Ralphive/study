@@ -26,10 +26,16 @@ const App = () => {
     },
   ];
 
+  //Callback
+  const handleSearch = event => {
+    console.log(event.target.value);
+  };
+
+
   return (
       <div>
         <Header/>
-        <Search/>
+        <Search onSearch={handleSearch} />
         <hr />
 
         <List list={stories}/>
@@ -57,13 +63,12 @@ const Header = () =>{
 
 }
 
-const Search = () =>{
+const Search = (props) =>{
   const [searchTerm, setSearchTerm] = React.useState('');
   
   const handleChange = (event) => {
-    // console.log(event)
-    // console.log(event.target.value);
     setSearchTerm(event.target.value);
+    props.onSearch(event); //Callback
 
   };
   
