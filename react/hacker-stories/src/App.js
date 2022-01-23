@@ -24,11 +24,11 @@ const list = [
     },
 ];
 
-function getTitle(title) {
+const getTitle = (title) => {
     return title;
 }
 
-function App() {
+const App = () => {
     return (
         <div>
             <Header />
@@ -41,7 +41,7 @@ function App() {
 }
 export default App;
 
-function Header() {
+const Header = () => {
     return (
         <header>
             <h1>
@@ -53,8 +53,8 @@ function Header() {
     );
 }
 
-function List() {
-    return list.map(function (item) {
+const List = () => {
+    return list.map((item) => {
         return (
             <div key={item.objectID}>
                 x -
