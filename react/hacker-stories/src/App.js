@@ -30,6 +30,8 @@ const App = () => {
       <div>
         <Header/>
         <Search/>
+        <hr />
+
         <List list={stories}/>
       </div>
   );
