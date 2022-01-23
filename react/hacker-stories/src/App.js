@@ -31,28 +31,40 @@ function getTitle(title) {
 function App() {
     return (
         <div>
-            <h1>
-                {welcome.greeting} {welcome.title}
-            </h1>
+            <Header />
+
             <h2>{getTitle("Function Result")} as a title 2</h2>
-            <p>
-                Here is an array{" "}
-                {list.map((item) => {
-                    return (
-                        <div key={item.objectID}>
-                            <span>
-                                <a href={item.url}>{item.title}</a>
-                            </span>
-                            <span>{item.author}</span>
-                            <span>{item.num_comments}</span>
-                            <span>{item.points}</span>
-                        </div>
-                    );
-                })}
-            </p>
-            <label htmlFor="search">Search: </label>
-            <input id="search" type="text" />
+            <p>Here is an array, but as a component</p>
+            <List />
         </div>
     );
 }
 export default App;
+
+function Header() {
+    return (
+        <header>
+            <h1>
+                {welcome.greeting} {welcome.title}
+            </h1>
+            <label htmlFor="search">Busca: </label>
+            <input id="search" type="text" />
+        </header>
+    );
+}
+
+function List() {
+    return list.map(function (item) {
+        return (
+            <div key={item.objectID}>
+                x -
+                <span>
+                    <a href={item.url}>{item.title}</a>
+                </span>
+                <span>{item.author}</span>
+                <span>{item.num_comments}</span>
+                <span>{item.points}</span>
+            </div>
+        );
+    });
+}
