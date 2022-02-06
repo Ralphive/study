@@ -1,5 +1,5 @@
 import Layout from "../../components/layout";
-import { getUsers, getUserData } from "../../lib/users.js";
+import { getUsersIds, getUserData } from "../../lib/users.js";
 import Image from "next/image";
 import utilStyles from "../../styles/utils.module.css";
 
@@ -23,7 +23,7 @@ export default function User({ userData }) {
 }
 
 export async function getStaticPaths() {
-    const paths = await getUsers();
+    const paths = await getUsersIds();
     return {
         paths,
         fallback: false,

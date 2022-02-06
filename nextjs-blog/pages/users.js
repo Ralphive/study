@@ -1,7 +1,7 @@
 import Head from "next/head";
 import Layout, { siteTitle } from "../components/layout";
 import utilStyles from "../styles/utils.module.css";
-import { getUsers } from "../lib/users";
+import { getUsersIds } from "../lib/users";
 
 function Page({ data }) {
     return (
@@ -25,7 +25,7 @@ function Page({ data }) {
 // This gets called on every request
 export async function getStaticProps() {
     // Fetch data from external API
-    const data = await getUsers();
+    const data = await getUsersIds();
 
     // Pass data to the page via props
     return { props: { data } };
