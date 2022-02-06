@@ -25,7 +25,7 @@ function Page({ data }) {
 // This gets called on every request
 export async function getServerSideProps() {
     // Fetch data from external API
-    const data = getUsers();
+    const data = await getUsers();
 
     // Pass data to the page via props
     return { props: { data } };
