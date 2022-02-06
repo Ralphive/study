@@ -5,25 +5,29 @@ import { getUsers } from "../lib/users";
 
 function Page({ data }) {
     return (
-        <section className={`${utilStyles.headingMd} ${utilStyles.padding1px}`}>
-            <h2 className={utilStyles.headingLg}>Users</h2>
-            <ul className={utilStyles.list}>
-                {data.data.map(({ id, first_name, last_name }) => (
-                    <li className={utilStyles.listItem} key={id}>
-                        {first_name}
-                        <br />
-                        {last_name}
-                        <br />
-                        {id}
-                    </li>
-                ))}
-            </ul>
-        </section>
+        <Layout>
+            <section
+                className={`${utilStyles.headingMd} ${utilStyles.padding1px}`}
+            >
+                <h2 className={utilStyles.headingLg}>Users</h2>
+                <ul className={utilStyles.list}>
+                    {data.data.map(({ id, first_name, last_name }) => (
+                        <li className={utilStyles.listItem} key={id}>
+                            {first_name}
+                            <br />
+                            {last_name}
+                            <br />
+                            {id}
+                        </li>
+                    ))}
+                </ul>
+            </section>
+        </Layout>
     );
 }
 
 // This gets called on every request
-export async function getServerSideProps() {
+export async function getStaticProps() {
     // Fetch data from external API
     const data = await getUsers();
 
