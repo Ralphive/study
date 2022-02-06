@@ -11,12 +11,8 @@ function Page({ data }) {
             >
                 <h2 className={utilStyles.headingLg}>Users</h2>
                 <ul className={utilStyles.list}>
-                    {data.data.map(({ id, first_name, last_name }) => (
+                    {data.map(({ id }) => (
                         <li className={utilStyles.listItem} key={id}>
-                            {first_name}
-                            <br />
-                            {last_name}
-                            <br />
                             {id}
                         </li>
                     ))}
